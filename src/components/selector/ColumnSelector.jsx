@@ -4,15 +4,15 @@ const ColumnSelector = ({ columns, selectedColumns, handleColumnChange }) => {
   return (
     <div>
       <h3>Pilih Kolom:</h3>
-      {columns.map((column, index) => (
+      {columns.map((columnName, index) => (
         <div key={index}>
           <input
             type="checkbox"
-            value={column}
-            checked={selectedColumns.includes(column)}
+            value={columnName}
+            checked={selectedColumns.includes(columnName)}
             onChange={handleColumnChange}
           />
-          {column}
+          {columnName}
         </div>
       ))}
     </div>

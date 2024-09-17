@@ -38,6 +38,7 @@ const SpreadsheetDownloader = () => {
       const metadataResponse = await fetch(
         `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}?key=${apiKey}`
       );
+      
       const metadata = await metadataResponse.json();
       const sheetName = metadata.sheets[0].properties.title; // Ambil nama sheet pertama
 
@@ -82,10 +83,10 @@ const SpreadsheetDownloader = () => {
     });
 
     if (duplicates.length > 0) {
-      alert(`Terdapat ${duplicates.length} baris yang duplikat!`); // Menampilkan jumlah baris duplikat
+      alert(`There are ${duplicates.length} duplicate rows!`); // Menampilkan jumlah baris duplikat
       setDuplicateRows(duplicates); // Simpan duplikat ke dalam state duplicateRows
     } else {
-      alert("Tidak ada duplikat ditemukan."); // Memberikan notifikasi jika tidak ada duplikat
+      alert("No duplicates were found."); // Memberikan notifikasi jika tidak ada duplikat
     }
   };
 
@@ -102,7 +103,7 @@ const SpreadsheetDownloader = () => {
   // Fungsi untuk mengunduh file berdasarkan kolom yang dipilih
   const downloadFiles = () => {
     if (filteredData.length === 0 || selectedColumns.length === 0) {
-      alert("Data belum tersedia atau kolom belum dipilih!"); // Peringatan jika data belum ada atau kolom belum dipilih
+      alert("The data is not available or the column is not selected!"); // Peringatan jika data belum ada atau kolom belum dipilih
       return;
     }
     downloadJsonOrZip(selectedColumns, filteredData); // Panggil fungsi untuk mengunduh file dalam format JSON atau ZIP
